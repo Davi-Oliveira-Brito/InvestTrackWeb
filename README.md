@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# InvestTrack Web
 
-## Getting Started
+Front-end da plataforma de análise de portfólio de investimentos. Interface para cadastro de carteira, acompanhamento de rentabilidade, métricas de risco e comparação com benchmarks (CDI/Ibovespa).
 
-First, run the development server:
+ **Front em produção:** *(em breve, deploy na Vercel)*
+ **API:** [InvestTrackApi](https://github.com/Davi-Oliveira-Brito/InvestTrackApi) — [investtrackapi.onrender.com](https://investtrackapi.onrender.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- **Framework:** Next.js (App Router)
+- **Linguagem:** TypeScript
+- **Estilização:** Tailwind CSS
+- **Componentes:** shadcn/ui (preset Nova — Lucide/Geist)
+- **Deploy:** Vercel
+
+## Estrutura de pastas
+
+```
+src/
+├── app/            → Rotas e páginas (App Router)
+├── components/     → Componentes reutilizáveis (inclui shadcn/ui em components/ui)
+├── lib/            → Funções utilitárias
+├── features/       → Código organizado por funcionalidade de negócio (auth, portfolio, etc.)
+├── services/       → Chamadas à API (clientes HTTP)
+├── hooks/          → Custom hooks React
+└── types/          → Tipos e interfaces TypeScript compartilhados
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Como rodar localmente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Pré-requisitos
+- Node.js 18+
+- A [API do InvestTrack](https://github.com/Davi-Oliveira-Brito/InvestTrackApi) rodando (local ou em produção)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Passos
 
-## Learn More
+```bash
+git clone https://github.com/Davi-Oliveira-Brito/InvestTrackWeb.git
+cd InvestTrackWeb
 
-To learn more about Next.js, take a look at the following resources:
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O front sobe por padrão em `http://localhost:3000`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Roadmap
 
-## Deploy on Vercel
+O desenvolvimento está sendo feito em sprints, em conjunto com a API. Acompanhe o progresso no [ROADMAP.md do repositório da API](https://github.com/Davi-Oliveira-Brito/InvestTrackApi/blob/main/ROADMAP.md).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Deploy planejado na Vercel, com integração automática a cada push na branch `main`.
