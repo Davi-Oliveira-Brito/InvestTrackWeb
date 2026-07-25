@@ -32,3 +32,7 @@ export function formatNumber(value: number | string): string {
 export function formatDateBR(value: string): string {
   return new Date(value).toLocaleDateString("pt-BR", { timeZone: "UTC" })
 }
+
+export function toIsoDateAtMidnightUtc(dateInputValue: string): string {
+  return new Date(`${dateInputValue}T00:00:00Z`).toISOString()
+}

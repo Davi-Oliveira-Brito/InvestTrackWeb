@@ -12,6 +12,7 @@ import {
   validateTicker,
   validateValorInvestido,
 } from "@/features/simulador/validation"
+import { toIsoDateAtMidnightUtc } from "@/lib/format"
 import { getApiErrorMessage, pickError } from "@/lib/validation-errors"
 import { postSimulacao } from "@/services/simulacao-service"
 import type { SimulacaoResponse } from "@/types/simulacao"
@@ -25,10 +26,6 @@ interface FieldErrors {
 interface SimuladorFormProps {
   token: string
   onResult: (resultado: SimulacaoResponse) => void
-}
-
-function toDataInvestimentoIso(dateInputValue: string): string {
-  return new Date(`${dateInputValue}T00:00:00Z`).toISOString()
 }
 
 export function SimuladorForm({ token, onResult }: SimuladorFormProps) {
@@ -56,7 +53,7 @@ export function SimuladorForm({ token, onResult }: SimuladorFormProps) {
       {
         ticker,
         valorInvestido: Number(valorInvestido),
-        dataInvestimento: toDataInvestimentoIso(dataInvestimento),
+        dataInvestimento: toIsoDateAtMidnightUtc(dataInvestimento),
       },
       token
     )
