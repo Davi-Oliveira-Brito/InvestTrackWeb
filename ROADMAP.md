@@ -106,8 +106,8 @@ JWT Bearer. Token expira em **2 horas** — sem refresh token (cortado de escopo
 
 ### Sprint 4 — Métricas e Simulador
 
-- [ ] Gráfico de linha — carteira vs CDI vs Ibovespa (`GET /api/carteira/metricas`), tratando `400` (carteira vazia) e `503` (indisponibilidade) com mensagens claras na UI
-- [ ] UI do simulador de cenário (`POST /api/simulacao`) — tratar `404` (ticker sem cotação)
+- [x] ~~Gráfico de linha~~ Barras horizontais — carteira vs CDI vs Ibovespa (`GET /api/carteira/metricas`), tratando `400` (carteira vazia) e `503` (indisponibilidade) com mensagens claras na UI
+- [x] UI do simulador de cenário (`POST /api/simulacao`) — tratar `404` (ticker sem cotação)
 
 **Critério de sucesso:** mostrar comparação com benchmark e rodar uma simulação de ponta a ponta, usando os tickers testáveis (`PETR4`, `MGLU3`, `VALE3`, `ITUB4`).
 
@@ -120,7 +120,7 @@ JWT Bearer. Token expira em **2 horas** — sem refresh token (cortado de escopo
 - [ ] Dark mode
 - [ ] README do front atualizado com setup e prints/gif de demo
 - [ ] Shell de navegação estilo CRM — sidebar com as seções (Dashboard/Carteira/etc.) e usuário no rodapé, substituindo a navegação avulsa link-a-link que existe hoje entre as páginas autenticadas
-- [ ] Corrigir o padrão de fetch client-side (`useEffect` chamando uma função que faz `setState`) usado em `/carteira` e `/dashboard` para satisfazer a regra de lint `react-hooks/set-state-in-effect` — hoje falha em ambas as páginas (nunca foi de fato verificado limpo desde o Sprint 2); resolver uma vez, de forma consistente, para todas as páginas autenticadas
+- [ ] Corrigir o padrão de fetch client-side (`useEffect` chamando uma função que faz `setState`) usado em `/carteira`, `/dashboard` e `/metricas` para satisfazer a regra de lint `react-hooks/set-state-in-effect` — hoje falha nas três páginas (nunca foi de fato verificado limpo desde o Sprint 2); resolver uma vez, de forma consistente, para todas as páginas autenticadas
 
 **Critério de sucesso:** navegar o app inteiro sem tela quebrada, em qualquer tamanho de tela.
 
@@ -156,7 +156,11 @@ Diferente do backend (que precisou de Deploy Hook porque o Render não valida na
 - Ver spec completo em `docs/superpowers/specs/2026-07-25-sprint3-dashboard-design.md`.
 
 ### Sprint 4
-- Status: não iniciado
+- Status: concluído (2026-07-25)
+- **Desvio do plano original:** `GET /api/carteira/metricas` não tem nenhuma série temporal (só 6 números pontuais), então o "gráfico de linha" pedido virou barras horizontais comparando os 3 retornos anualizados (Carteira/CDI/Ibovespa) — forma correta pra comparar magnitude entre poucas categorias num instante só. `retornoAnualizadoIbovespa` pode vir `null` mesmo num 200 de sucesso (falha isolada da cotação externa) e vira "indisponível" na UI.
+- `ApiError` ganhou um campo opcional `status?: number` (`src/types/api.ts`) pra distinguir `400` (carteira vazia) de `503` (indisponibilidade temporária) nas métricas — antes os dois caíam no mesmo `kind: "business"`, indistinguíveis.
+- Simulador: `valorInvestido` é opcional na API mas obrigatório no front; ticker é texto livre (não travado nos 4 tickers testáveis), pra já funcionar quando o token do Brapi for configurado.
+- Ver spec completo em `docs/superpowers/specs/2026-07-25-sprint4-metricas-simulador-design.md`.
 
 ### Sprint 5
 - Status: não iniciado
