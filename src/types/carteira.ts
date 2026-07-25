@@ -39,3 +39,13 @@ export interface ResumoResponse {
   rentabilidadeTotalValor: number | string | null
   rentabilidadeTotalPercentual: number | string | null
 }
+
+export interface MetricasResponse {
+  diasConsiderados: number | string
+  volatilidadeAnualizada: number | string
+  retornoAnualizadoCarteira: number | string
+  sharpeRatio: number | string
+  drawdownMaximo: number | string
+  retornoAnualizadoCdi: number | string
+  retornoAnualizadoIbovespa: number | string | null
+}
