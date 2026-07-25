@@ -8,6 +8,9 @@ const cardVariants = cva("rounded-xl p-6", {
       content: "bg-card text-card-foreground",
       sage: "bg-canvas-soft text-ink",
       pale: "bg-primary-pale text-ink",
+      "metric-wrapper": "rounded-lg bg-canvas-soft p-4",
+      "metric-child": "rounded-lg bg-canvas p-4",
+      "resumo-linhas": "rounded-lg border border-border bg-canvas p-5",
     },
   },
   defaultVariants: {
