@@ -15,7 +15,7 @@ import { getResumo, listPosicoes } from "@/services/carteira-service"
 import type { PosicaoResponse, ResumoResponse } from "@/types/carteira"
 
 export default function DashboardPage() {
-  const { token, logout } = useAuth()
+  const { token } = useAuth()
 
   const [resumo, setResumo] = useState<ResumoResponse | null>(null)
   const [posicoes, setPosicoes] = useState<PosicaoResponse[]>([])
@@ -57,31 +57,9 @@ export default function DashboardPage() {
   return (
     <main className="flex flex-1 flex-col gap-6 bg-canvas-soft px-6 py-16">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
-        <div className="flex items-center justify-between">
-          <h1 className="font-heading text-3xl font-black tracking-tight text-ink">
-            Dashboard
-          </h1>
-          <div className="flex gap-3">
-            <Button
-              render={<Link href="/carteira">Minha carteira</Link>}
-              nativeButton={false}
-              variant="outline"
-            />
-            <Button
-              render={<Link href="/metricas">Métricas</Link>}
-              nativeButton={false}
-              variant="outline"
-            />
-            <Button
-              render={<Link href="/simulador">Simulador</Link>}
-              nativeButton={false}
-              variant="outline"
-            />
-            <Button variant="outline" onClick={logout}>
-              Sair
-            </Button>
-          </div>
-        </div>
+        <h1 className="font-heading text-3xl font-black tracking-tight text-ink">
+          Dashboard
+        </h1>
 
         {isLoading && <p className="text-body">Carregando...</p>}
 
