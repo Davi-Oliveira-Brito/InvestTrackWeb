@@ -57,7 +57,7 @@ export default function LoginPage() {
       return
     }
 
-    setSession(result.data)
+    setSession({ ...result.data, email })
     router.push("/dashboard")
   }
 
