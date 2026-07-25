@@ -119,8 +119,8 @@ JWT Bearer. Token expira em **2 horas** — sem refresh token (cortado de escopo
 - [ ] Responsividade (mobile/desktop)
 - [ ] Dark mode
 - [ ] README do front atualizado com setup e prints/gif de demo
-- [ ] Shell de navegação estilo CRM — sidebar com as seções (Dashboard/Carteira/etc.) e usuário no rodapé, substituindo a navegação avulsa link-a-link que existe hoje entre as páginas autenticadas
-- [ ] Corrigir o padrão de fetch client-side (`useEffect` chamando uma função que faz `setState`) usado em `/carteira`, `/dashboard` e `/metricas` para satisfazer a regra de lint `react-hooks/set-state-in-effect` — hoje falha nas três páginas (nunca foi de fato verificado limpo desde o Sprint 2); resolver uma vez, de forma consistente, para todas as páginas autenticadas
+- [x] Shell de navegação estilo CRM — sidebar com as seções (Dashboard/Carteira/etc.) e usuário no rodapé, substituindo a navegação avulsa link-a-link que existia entre as páginas autenticadas
+- [ ] Corrigir o padrão de fetch client-side (`useEffect` chamando uma função que faz `setState`) usado em `/carteira`, `/dashboard`, `/metricas` e agora também `AuthProvider` (`src/features/auth/auth-provider.tsx`) para satisfazer a regra de lint `react-hooks/set-state-in-effect` — hoje falha nos quatro (nunca foi de fato verificado limpo desde o Sprint 2); resolver uma vez, de forma consistente
 
 **Critério de sucesso:** navegar o app inteiro sem tela quebrada, em qualquer tamanho de tela.
 
@@ -163,4 +163,8 @@ Diferente do backend (que precisou de Deploy Hook porque o Render não valida na
 - Ver spec completo em `docs/superpowers/specs/2026-07-25-sprint4-metricas-simulador-design.md`.
 
 ### Sprint 5
-- Status: não iniciado
+- Status: em andamento (2026-07-25) — item 1 de 6 (shell de navegação) concluído; os outros 5 (loading states, responsividade, dark mode, README, fix de lint) ficam para specs/plans futuros.
+- **Shell de navegação**: `/dashboard`, `/carteira`, `/metricas`, `/simulador` migraram para um route group `src/app/(app)/` com um `layout.tsx` único (`ProtectedRoute` + `AppShell`), substituindo os 4 `layout.tsx` individuais.
+- Identidade do usuário (`email`/`nome` no rodapé da sidebar) vem do que foi digitado no formulário de login/registro, salvo em `localStorage` junto da sessão — a API não devolve perfil (login/registro só retornam `{ token, expiraEm }`).
+- Drawer mobile reaproveita o `Dialog` já existente (`@base-ui/react`), reposicionado via classes (`tailwind-merge` resolve os conflitos de posicionamento), sem componente novo de acessibilidade pra manter.
+- Ver spec completo em `docs/superpowers/specs/2026-07-25-sidebar-shell-design.md`.
