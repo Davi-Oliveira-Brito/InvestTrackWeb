@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Fustat, Geist, Geist_Mono, Inter, Inter_Tight } from "next/font/google";
 import { AuthProvider } from "@/features/auth/auth-provider";
 import "./globals.css";
 
@@ -18,6 +18,16 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const fustat = Fustat({
+  variable: "--font-fustat",
+  subsets: ["latin"],
+});
+
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "InvestTrack",
   description:
@@ -32,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${fustat.variable} ${interTight.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <AuthProvider>{children}</AuthProvider>
