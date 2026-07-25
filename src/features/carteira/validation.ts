@@ -1,6 +1,5 @@
 import type { TipoAtivo } from "@/types/carteira"
-
-const TIPOS_ATIVO: TipoAtivo[] = ["Acao", "FII", "RendaFixa"]
+import { TIPOS_ATIVO } from "@/features/carteira/tipo-ativo"
 
 export function validateTicker(ticker: string): string | undefined {
   if (ticker.trim().length === 0) return "Informe o ticker."
