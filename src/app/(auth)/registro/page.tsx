@@ -61,7 +61,7 @@ export default function RegisterPage() {
       return
     }
 
-    setSession(result.data)
+    setSession({ ...result.data, email, nome })
     router.push("/dashboard")
   }
 
