@@ -128,6 +128,24 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* CRM redesign — scoped to the logged-in area only (AppShell sets data-app-shell). */
+/* :root above keeps the Wise palette for Home/login/registro, untouched. */
+[data-app-shell] {
+  --canvas-soft: #F6F6F0;
+  --ink: #1C1B10;
+  --body: #807A47;
+  --mute: #807A47;
+  --positive: #22C55E;
+  --negative: #EF4444;
+  --primary: #EAE668;
+  --primary-active: #D6D02E;
+  --primary-pale: #F8F7D4;
+  --border: #EDECDF;
+  --ring: #EAE668;
+  --font-heading: var(--font-fustat);
+  --font-sans: var(--font-inter-tight);
+}
+
 /* Dark mode is Sprint 5 scope — left as the shadcn default (unused/unwired) for now. */
 .dark {
   --background: oklch(0.145 0 0);
