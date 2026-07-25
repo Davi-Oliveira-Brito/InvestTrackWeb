@@ -30,3 +30,12 @@ export interface EditarPosicaoPayload {
   precoMedio: number
   dataCompra: string
 }
+
+export interface ResumoResponse {
+  quantidadePosicoes: number
+  quantidadePosicoesSemCotacao: number
+  valorTotalInvestido: number | string
+  valorTotalAtual: number | string | null
+  rentabilidadeTotalValor: number | string | null
+  rentabilidadeTotalPercentual: number | string | null
+}
