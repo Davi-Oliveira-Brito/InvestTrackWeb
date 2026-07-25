@@ -86,10 +86,10 @@ JWT Bearer. Token expira em **2 horas** — sem refresh token (cortado de escopo
 
 ### Sprint 2 — Minha Carteira
 
-- [ ] Formulário de adicionar posição (`POST /api/carteira`) — ticker, nome, tipo (select fixo: Acao/FII/RendaFixa), quantidade, preço médio, data da compra
-- [ ] Tabela listando posições (`GET /api/carteira`) — tratar `null` em preço/rentabilidade como "cotação pendente"
-- [ ] Editar posição (`PUT /api/carteira/{id}`)
-- [ ] Remover posição (`DELETE /api/carteira/{id}`)
+- [x] Formulário de adicionar posição (`POST /api/carteira`) — ticker, nome, tipo (select fixo: Acao/FII/RendaFixa), quantidade, preço médio, data da compra
+- [x] Tabela listando posições (`GET /api/carteira`) — tratar `null` em preço/rentabilidade como "cotação pendente"
+- [x] Editar posição (`PUT /api/carteira/{id}`)
+- [x] Remover posição (`DELETE /api/carteira/{id}`)
 
 **Critério de sucesso:** cadastrar, editar e remover posições pelo front, refletindo no banco.
 
@@ -97,8 +97,8 @@ JWT Bearer. Token expira em **2 horas** — sem refresh token (cortado de escopo
 
 ### Sprint 3 — Dashboard
 
-- [ ] Cards de resumo (`GET /api/carteira/resumo`) — valor total, rentabilidade (tratar `null`)
-- [ ] Gráfico de pizza — alocação por ativo/classe (`tipo`)
+- [x] Cards de resumo (`GET /api/carteira/resumo`) — valor total, rentabilidade (tratar `null`)
+- [x] Gráfico de pizza — alocação por ativo/classe (`tipo`)
 
 **Critério de sucesso:** dashboard reflete os dados reais da carteira cadastrada.
 
@@ -119,6 +119,8 @@ JWT Bearer. Token expira em **2 horas** — sem refresh token (cortado de escopo
 - [ ] Responsividade (mobile/desktop)
 - [ ] Dark mode
 - [ ] README do front atualizado com setup e prints/gif de demo
+- [ ] Shell de navegação estilo CRM — sidebar com as seções (Dashboard/Carteira/etc.) e usuário no rodapé, substituindo a navegação avulsa link-a-link que existe hoje entre as páginas autenticadas
+- [ ] Corrigir o padrão de fetch client-side (`useEffect` chamando uma função que faz `setState`) usado em `/carteira` e `/dashboard` para satisfazer a regra de lint `react-hooks/set-state-in-effect` — hoje falha em ambas as páginas (nunca foi de fato verificado limpo desde o Sprint 2); resolver uma vez, de forma consistente, para todas as páginas autenticadas
 
 **Critério de sucesso:** navegar o app inteiro sem tela quebrada, em qualquer tamanho de tela.
 
@@ -132,8 +134,8 @@ Diferente do backend (que precisou de Deploy Hook porque o Render não valida na
 
 ## Pendências de infraestrutura (fora do código do front)
 
-- [ ] Configurar `Cors__AllowedOrigins__0` no Render com a URL da Vercel assim que o front for deployado
-- [ ] Deploy do front na Vercel
+- [x] Configurar `Cors__AllowedOrigins__0` no Render com a URL da Vercel assim que o front for deployado
+- [x] Deploy do front na Vercel
 - [ ] (Opcional, futuro) Configurar `Brapi__Token` no Render para liberar mais tickers além dos 4 testáveis hoje
 
 ## Log de progresso
@@ -144,10 +146,14 @@ Diferente do backend (que precisou de Deploy Hook porque o Render não valida na
 - `/dashboard` por enquanto é placeholder; conteúdo real entra no Sprint 3.
 
 ### Sprint 2
-- Status: não iniciado
+- Status: concluído (2026-07-25)
+- Shipped via PR #2 (`sprint-2-carteira` → `main`), incluindo fix de label acentuado no select de tipo.
 
 ### Sprint 3
-- Status: não iniciado
+- Status: concluído (2026-07-25)
+- Gráfico de pizza é SVG desenhado à mão (sem biblioteca nova), com paleta categórica de 3 cores validada via skill de dataviz (banda de luminosidade, piso de croma, separação CVD par-a-par, contraste).
+- Peso de cada fatia usa `valorAtual`, com fallback pro `valorInvestido` quando a cotação ainda está pendente.
+- Ver spec completo em `docs/superpowers/specs/2026-07-25-sprint3-dashboard-design.md`.
 
 ### Sprint 4
 - Status: não iniciado
