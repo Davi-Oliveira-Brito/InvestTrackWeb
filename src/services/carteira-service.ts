@@ -4,10 +4,15 @@ import type {
   CriarPosicaoPayload,
   EditarPosicaoPayload,
   PosicaoResponse,
+  ResumoResponse,
 } from "@/types/carteira"
 
 export function listPosicoes(token: string): Promise<ApiResult<PosicaoResponse[]>> {
   return httpClient.get<PosicaoResponse[]>("/api/carteira", token)
+}
+
+export function getResumo(token: string): Promise<ApiResult<ResumoResponse>> {
+  return httpClient.get<ResumoResponse>("/api/carteira/resumo", token)
 }
 
 export function createPosicao(
