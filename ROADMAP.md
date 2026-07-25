@@ -73,12 +73,12 @@ JWT Bearer. Token expira em **2 horas** — sem refresh token (cortado de escopo
 
 ### Sprint 1 — Home (Landing) + Autenticação (Login/Registro)
 
-- [ ] Home (`/`): landing simples — Hero (headline + subtítulo curto) + CTA duplo ("Entrar" / "Criar conta"). Sem seções extras (features, prova social, etc.) por agora — foco é o produto funcionar, landing elaborada fica para o polimento (Sprint 5) se sobrar tempo.
-- [ ] Camada de serviço (`src/services/`): cliente HTTP centralizado, URL base via `NEXT_PUBLIC_API_URL` (fallback `http://localhost:5158`), tratamento dos dois formatos de erro e do `429`
-- [ ] Tela de Registro: formulário (nome, email, senha), validação client-side espelhando as regras da API, exibição de erro do servidor sem duplicar mensagem
-- [ ] Tela de Login: formulário (email, senha)
-- [ ] Armazenamento do token em `localStorage`, redirecionamento pós-login/registro
-- [ ] Rota protegida: redirecionar para login se não houver token válido
+- [x] Home (`/`): landing simples — Hero (headline + subtítulo curto) + CTA duplo ("Entrar" / "Criar conta"). Sem seções extras (features, prova social, etc.) por agora — foco é o produto funcionar, landing elaborada fica para o polimento (Sprint 5) se sobrar tempo.
+- [x] Camada de serviço (`src/services/`): cliente HTTP centralizado, URL base via `NEXT_PUBLIC_API_URL` (fallback `http://localhost:5158`), tratamento dos dois formatos de erro e do `429`
+- [x] Tela de Registro: formulário (nome, email, senha), validação client-side espelhando as regras da API, exibição de erro do servidor sem duplicar mensagem
+- [x] Tela de Login: formulário (email, senha)
+- [x] Armazenamento do token em `localStorage`, redirecionamento pós-login/registro
+- [x] Rota protegida: redirecionar para login se não houver token válido
 
 **Critério de sucesso:** acessar a Home, navegar para login/registro, criar conta e logar, token salvo, navegação protegida funcionando.
 
@@ -139,7 +139,9 @@ Diferente do backend (que precisou de Deploy Hook porque o Render não valida na
 ## Log de progresso
 
 ### Sprint 1
-- Status: não iniciado
+- Status: concluído (2026-07-25)
+- Rota protegida (`/dashboard`) implementada como guard client-side (`ProtectedRoute`), já que a sessão vive em `localStorage` e não em cookie — Proxy/Middleware do Next não teria acesso a ela.
+- `/dashboard` por enquanto é placeholder; conteúdo real entra no Sprint 3.
 
 ### Sprint 2
 - Status: não iniciado
