@@ -32,12 +32,17 @@ interface AllocationPieChartProps {
 export function AllocationPieChart({ alocacao }: AllocationPieChartProps) {
   if (alocacao.length === 0) return null
 
-  let cumulativeAngle = 0
-  const slices = alocacao.map((item) => {
-    const startAngle = cumulativeAngle
-    cumulativeAngle += (item.percent / 100) * 360
-    return { ...item, startAngle, endAngle: cumulativeAngle }
-  })
+  const cumulativeEndAngles = alocacao.reduce<number[]>((acc, item, index) => {
+    const previousEnd = index === 0 ? 0 : acc[index - 1]
+    acc.push(previousEnd + (item.percent / 100) * 360)
+    return acc
+  }, [])
+
+  const slices = alocacao.map((item, index) => ({
+    ...item,
+    startAngle: index === 0 ? 0 : cumulativeEndAngles[index - 1],
+    endAngle: cumulativeEndAngles[index],
+  }))
 
   return (
     <div className="flex flex-col items-center gap-4">
