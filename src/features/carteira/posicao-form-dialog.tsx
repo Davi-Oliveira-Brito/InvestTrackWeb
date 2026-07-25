@@ -211,7 +211,11 @@ function PosicaoForm({ posicao, token, onSaved }: PosicaoFormProps) {
             <Label htmlFor="tipo">Tipo</Label>
             <Select value={tipo} onValueChange={(value) => setTipo(value ?? "")}>
               <SelectTrigger id="tipo" className="w-full" aria-invalid={Boolean(fieldErrors.tipo)}>
-                <SelectValue placeholder="Selecione o tipo" />
+                <SelectValue placeholder="Selecione o tipo">
+                  {(value: unknown) =>
+                    value ? TIPO_LABELS[value as TipoAtivo] : "Selecione o tipo"
+                  }
+                </SelectValue>
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="Acao">Ação</SelectItem>
