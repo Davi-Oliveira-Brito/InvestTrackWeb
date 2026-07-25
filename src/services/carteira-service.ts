@@ -3,6 +3,7 @@ import type { ApiResult } from "@/types/api"
 import type {
   CriarPosicaoPayload,
   EditarPosicaoPayload,
+  MetricasResponse,
   PosicaoResponse,
   ResumoResponse,
 } from "@/types/carteira"
@@ -13,6 +14,10 @@ export function listPosicoes(token: string): Promise<ApiResult<PosicaoResponse[]
 
 export function getResumo(token: string): Promise<ApiResult<ResumoResponse>> {
   return httpClient.get<ResumoResponse>("/api/carteira/resumo", token)
+}
+
+export function getMetricas(token: string): Promise<ApiResult<MetricasResponse>> {
+  return httpClient.get<MetricasResponse>("/api/carteira/metricas", token)
 }
 
 export function createPosicao(

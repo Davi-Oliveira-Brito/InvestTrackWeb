@@ -67,6 +67,16 @@ export default function DashboardPage() {
               nativeButton={false}
               variant="outline"
             />
+            <Button
+              render={<Link href="/metricas">Métricas</Link>}
+              nativeButton={false}
+              variant="outline"
+            />
+            <Button
+              render={<Link href="/simulador">Simulador</Link>}
+              nativeButton={false}
+              variant="outline"
+            />
             <Button variant="outline" onClick={logout}>
               Sair
             </Button>
