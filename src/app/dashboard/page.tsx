@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/features/auth/auth-provider"
 
@@ -13,11 +15,18 @@ export default function DashboardPage() {
           Dashboard
         </h1>
         <p className="text-body">
-          Sua sessão está ativa. O conteúdo da carteira chega nos próximos sprints.
+          Sua sessão está ativa. Os cards de resumo chegam nos próximos sprints.
         </p>
-        <Button size="xl" variant="outline" onClick={logout}>
-          Sair
-        </Button>
+        <div className="mt-2 flex gap-3">
+          <Button
+            render={<Link href="/carteira">Minha carteira</Link>}
+            nativeButton={false}
+            size="xl"
+          />
+          <Button size="xl" variant="outline" onClick={logout}>
+            Sair
+          </Button>
+        </div>
       </div>
     </main>
   )
