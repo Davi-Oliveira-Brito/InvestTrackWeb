@@ -81,7 +81,7 @@ Sem mudança de código — só o CSS escopado (decisão de arquitetura, item 2)
 `SelectTrigger`: radius 8px. `SelectContent` (popup): trocar `shadow-md` por `shadow-lg` (CRM.md 6.3 dá o valor exato do box-shadow, que corresponde à utilidade `shadow-lg` do Tailwind).
 
 ### `src/components/ui/table.tsx` (modificação)
-Container com radius 4px (CRM.md 7, "sutil comparado aos cards"). Remover o hover/zebra padrão do shadcn (`hover:bg-muted/50` na `TableRow`) — CRM.md pede "sem zebra-striping nem bordas fortes entre linhas".
+Container com radius 4px (CRM.md 7, "sutil comparado aos cards"). **Mantém o hover** (`hover:bg-muted/50` na `TableRow`, só recolorido pro novo `--muted`) — é comportamento de interação (ajuda a rastrear a linha numa lista de posições), não conflita com "sem zebra-striping". Zebra-striping estática (`even:`/`odd:bg-*`) já não existe no componente hoje — nada a remover aí, só confirmar que nada do tipo é adicionado.
 
 ### `src/features/app-shell/app-shell.tsx` (reescrita)
 - `data-app-shell` no `<div>` raiz.
