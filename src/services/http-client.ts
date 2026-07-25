@@ -29,7 +29,7 @@ async function request<T>(
   }
 
   if (response.status === 429) {
-    return { ok: false, error: { kind: "rate-limited" } }
+    return { ok: false, error: { kind: "rate-limited", status: response.status } }
   }
 
   if (response.status === 204) {
@@ -53,22 +53,24 @@ function parseErrorBody(status: number, body: unknown): ApiError {
       return {
         kind: "validation",
         errors: record.errors as Record<string, string[]>,
+        status,
       }
     }
 
     if (typeof record.message === "string") {
-      return { kind: "business", message: record.message }
+      return { kind: "business", message: record.message, status }
     }
 
     if (typeof record.title === "string") {
       const detail = typeof record.detail === "string" ? record.detail : record.title
-      return { kind: "unexpected", message: detail }
+      return { kind: "unexpected", message: detail, status }
     }
   }
 
   return {
     kind: "unexpected",
     message: "Erro inesperado. Tente novamente em instantes.",
+    status,
   }
 }
 

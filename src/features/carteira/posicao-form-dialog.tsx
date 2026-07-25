@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { toIsoDateAtMidnightUtc } from "@/lib/format"
 import { getApiErrorMessage, pickError } from "@/lib/validation-errors"
 import { createPosicao, updatePosicao } from "@/services/carteira-service"
 import type { PosicaoResponse, TipoAtivo } from "@/types/carteira"
@@ -53,10 +54,6 @@ interface PosicaoFormDialogProps {
 
 function toDateInputValue(iso: string): string {
   return iso.slice(0, 10)
-}
-
-function toDataCompraIso(dateInputValue: string): string {
-  return new Date(`${dateInputValue}T00:00:00Z`).toISOString()
 }
 
 export function PosicaoFormDialog({
@@ -136,7 +133,7 @@ function PosicaoForm({ posicao, token, onSaved }: PosicaoFormProps) {
           {
             quantidade: Number(quantidade),
             precoMedio: Number(precoMedio),
-            dataCompra: toDataCompraIso(dataCompra),
+            dataCompra: toIsoDateAtMidnightUtc(dataCompra),
           },
           token
         )
@@ -147,7 +144,7 @@ function PosicaoForm({ posicao, token, onSaved }: PosicaoFormProps) {
             tipo: tipo as TipoAtivo,
             quantidade: Number(quantidade),
             precoMedio: Number(precoMedio),
-            dataCompra: toDataCompraIso(dataCompra),
+            dataCompra: toIsoDateAtMidnightUtc(dataCompra),
           },
           token
         )
