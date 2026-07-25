@@ -65,10 +65,8 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+  /* Wise design scale stops at xl (24px); larger radius steps intentionally fall back to Tailwind defaults */
   --radius-xl: 24px;
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
