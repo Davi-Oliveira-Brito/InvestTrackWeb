@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 
+import { Section } from "@/components/ui/section"
 import { useAuth } from "@/features/auth/auth-provider"
 import { SimulacaoResultCard } from "@/features/simulador/simulacao-result-card"
 import { SimuladorForm } from "@/features/simulador/simulador-form"
@@ -20,9 +21,21 @@ export default function SimuladorPage() {
           Simulador
         </h1>
 
-        <SimuladorForm token={token} onResult={setResultado} />
+        <Section
+          title="Simular investimento"
+          info="Estime quanto um investimento teria rendido se tivesse sido feito em uma data passada, com base na cotação do ativo."
+        >
+          <SimuladorForm token={token} onResult={setResultado} />
+        </Section>
 
-        {resultado && <SimulacaoResultCard resultado={resultado} />}
+        {resultado && (
+          <Section
+            title="Resultado da simulação"
+            info="Compara o valor investido na data escolhida com o valor atual do ativo, mostrando o ganho ou perda no período."
+          >
+            <SimulacaoResultCard resultado={resultado} />
+          </Section>
+        )}
       </div>
     </main>
   )

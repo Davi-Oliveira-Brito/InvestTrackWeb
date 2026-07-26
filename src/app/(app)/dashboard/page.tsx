@@ -4,8 +4,8 @@ import Link from "next/link"
 import { useCallback, useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
 import { FormAlert } from "@/components/ui/form-alert"
+import { Section } from "@/components/ui/section"
 import { useAuth } from "@/features/auth/auth-provider"
 import { aggregateByTipo } from "@/features/dashboard/aggregate-by-tipo"
 import { AllocationPieChart } from "@/features/dashboard/allocation-pie-chart"
@@ -73,18 +73,23 @@ export default function DashboardPage() {
         )}
 
         {!isLoading && !loadError && resumo && resumo.quantidadePosicoes === 0 && (
-          <Card className="flex flex-col items-center gap-3 py-12 text-center">
+          <div className="flex flex-col items-center gap-3 py-12 text-center">
             <p className="text-body">Você ainda não tem posições na carteira.</p>
             <Button render={<Link href="/carteira">Adicionar posição</Link>} nativeButton={false} />
-          </Card>
+          </div>
         )}
 
         {!isLoading && !loadError && resumo && resumo.quantidadePosicoes > 0 && (
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <ResumoCards resumo={resumo} />
-            <Card className="flex items-center justify-center">
-              <AllocationPieChart alocacao={aggregateByTipo(posicoes)} />
-            </Card>
+            <Section
+              title="Alocação por classe de ativo"
+              info="Mostra como o valor da sua carteira está distribuído entre Ações, FIIs e Renda Fixa."
+            >
+              <div className="flex items-center justify-center">
+                <AllocationPieChart alocacao={aggregateByTipo(posicoes)} />
+              </div>
+            </Section>
           </div>
         )}
       </div>

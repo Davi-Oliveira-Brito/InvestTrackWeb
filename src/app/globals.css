@@ -7,9 +7,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-geist-sans);
+  --font-sans: var(--font-inter-tight);
+  --font-heading: var(--font-fustat);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -40,27 +39,16 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
 
-  /* Wise-inspired tokens — see DESIGN-SYSTEM.md */
+  /* Brand tokens — see DESIGN-SYSTEM.md */
   --color-canvas: var(--canvas);
   --color-canvas-soft: var(--canvas-soft);
   --color-ink: var(--ink);
-  --color-ink-deep: var(--ink-deep);
   --color-body: var(--body);
   --color-mute: var(--mute);
   --color-positive: var(--positive);
-  --color-positive-deep: var(--positive-deep);
-  --color-warning: var(--warning);
-  --color-warning-deep: var(--warning-deep);
-  --color-warning-content: var(--warning-content);
   --color-negative: var(--negative);
-  --color-negative-deep: var(--negative-deep);
-  --color-negative-darkest: var(--negative-darkest);
-  --color-negative-bg: var(--negative-bg);
   --color-primary-active: var(--primary-active);
-  --color-primary-neutral: var(--primary-neutral);
   --color-primary-pale: var(--primary-pale);
-  --color-accent-orange: var(--accent-orange);
-  --color-accent-cyan: var(--accent-cyan);
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -70,29 +58,18 @@
 }
 
 :root {
-  /* Wise-inspired design tokens — see DESIGN-SYSTEM.md */
+  /* Brand tokens — see DESIGN-SYSTEM.md */
   --canvas: #ffffff;
-  --canvas-soft: #e8ebe6;
-  --ink: #0e0f0c;
-  --ink-deep: #163300;
-  --body: #454745;
-  --mute: #868685;
+  --canvas-soft: #FFFFF7;
+  --ink: #1C1B10;
+  --body: #807A47;
+  --mute: #807A47;
 
-  --positive: #2ead4b;
-  --positive-deep: #054d28;
-  --warning: #ffd11a;
-  --warning-deep: #b86700;
-  --warning-content: #4a3b1c;
-  --negative: #d03238;
-  --negative-deep: #a72027;
-  --negative-darkest: #a7000d;
-  --negative-bg: #320707;
+  --positive: #22C55E;
+  --negative: #EF4444;
 
-  --primary-active: #cdffad;
-  --primary-neutral: #c5edab;
-  --primary-pale: #e2f6d5;
-  --accent-orange: #ffc091;
-  --accent-cyan: #38c8ff;
+  --primary-active: #D6D02E;
+  --primary-pale: #F8F7D4;
 
   --background: var(--canvas-soft);
   --foreground: var(--ink);
@@ -100,18 +77,18 @@
   --card-foreground: var(--ink);
   --popover: var(--canvas);
   --popover-foreground: var(--ink);
-  --primary: #9fe870;
+  --primary: #EAE668;
   --primary-foreground: var(--ink);
   --secondary: var(--canvas-soft);
   --secondary-foreground: var(--ink);
-  --muted: var(--canvas-soft);
+  --muted: var(--border);
   --muted-foreground: var(--mute);
   --accent: var(--primary-pale);
   --accent-foreground: var(--ink);
   --destructive: var(--negative);
-  --border: var(--ink);
-  --input: var(--ink);
-  --ring: #9fe870;
+  --border: #EDECDF;
+  --input: var(--border);
+  --ring: #EAE668;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);

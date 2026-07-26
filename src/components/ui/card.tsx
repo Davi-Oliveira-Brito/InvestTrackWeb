@@ -5,9 +5,12 @@ import { cn } from "@/lib/utils"
 const cardVariants = cva("rounded-xl p-6", {
   variants: {
     variant: {
-      content: "bg-card text-card-foreground",
+      content: "bg-card text-card-foreground shadow-sm",
       sage: "bg-canvas-soft text-ink",
       pale: "bg-primary-pale text-ink",
+      "metric-wrapper": "rounded-lg bg-canvas-soft p-4",
+      "metric-child": "rounded-lg bg-canvas p-4 shadow-sm",
+      "resumo-linhas": "rounded-lg bg-canvas p-5 shadow-sm",
     },
   },
   defaultVariants: {
