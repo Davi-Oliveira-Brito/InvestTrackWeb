@@ -28,6 +28,36 @@ async function request<T>(
     return { ok: false, error: { kind: "network" } }
   }
 
+  return handleResponse<T>(response)
+}
+
+async function requestForm<T>(
+  path: string,
+  formData: FormData,
+  token?: string
+): Promise<ApiResult<T>> {
+  const headers: HeadersInit = {}
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
+  }
+
+  let response: Response
+  try {
+    // No Content-Type set here on purpose: the browser fills in the
+    // multipart boundary itself when the body is a FormData instance.
+    response = await fetch(`${API_URL}${path}`, {
+      method: "POST",
+      headers,
+      body: formData,
+    })
+  } catch {
+    return { ok: false, error: { kind: "network" } }
+  }
+
+  return handleResponse<T>(response)
+}
+
+async function handleResponse<T>(response: Response): Promise<ApiResult<T>> {
   if (response.status === 429) {
     return { ok: false, error: { kind: "rate-limited", status: response.status } }
   }
@@ -82,4 +112,6 @@ export const httpClient = {
     request<T>(path, { method: "PUT", body, token }),
   delete: <T>(path: string, token?: string) =>
     request<T>(path, { method: "DELETE", token }),
+  postForm: <T>(path: string, formData: FormData, token?: string) =>
+    requestForm<T>(path, formData, token),
 }

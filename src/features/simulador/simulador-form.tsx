@@ -8,6 +8,13 @@ import { FormAlert } from "@/components/ui/form-alert"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import {
   validateDataInvestimento,
   validateTicker,
   validateValorInvestido,
@@ -16,6 +23,13 @@ import { toIsoDateAtMidnightUtc } from "@/lib/format"
 import { getApiErrorMessage, pickError } from "@/lib/validation-errors"
 import { postSimulacao } from "@/services/simulacao-service"
 import type { SimulacaoResponse } from "@/types/simulacao"
+
+const TICKERS_DISPONIVEIS = [
+  { value: "PETR4", label: "PETR4 · Petrobras" },
+  { value: "MGLU3", label: "MGLU3 · Magazine Luiza" },
+  { value: "VALE3", label: "VALE3 · Vale" },
+  { value: "ITUB4", label: "ITUB4 · Itaú Unibanco" },
+] as const
 
 interface FieldErrors {
   ticker?: string
@@ -89,14 +103,24 @@ export function SimuladorForm({ token, onResult }: SimuladorFormProps) {
 
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="ticker">Ticker</Label>
-        <Input
-          id="ticker"
-          value={ticker}
-          onChange={(event) => setTicker(event.target.value.toUpperCase())}
-          aria-invalid={Boolean(fieldErrors.ticker)}
-        />
+        <Select value={ticker} onValueChange={(value) => setTicker(value ?? "")}>
+          <SelectTrigger id="ticker" className="w-full" aria-invalid={Boolean(fieldErrors.ticker)}>
+            <SelectValue placeholder="Selecione o ativo">
+              {(value: unknown) =>
+                TICKERS_DISPONIVEIS.find((t) => t.value === value)?.label ?? "Selecione o ativo"
+              }
+            </SelectValue>
+          </SelectTrigger>
+          <SelectContent>
+            {TICKERS_DISPONIVEIS.map((t) => (
+              <SelectItem key={t.value} value={t.value}>
+                {t.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         <p className="text-xs text-mute">
-          Hoje só PETR4, MGLU3, VALE3 e ITUB4 têm cotação disponível em produção.
+          A simulação hoje só está disponível para esses 4 ativos.
         </p>
         <FieldError>{fieldErrors.ticker}</FieldError>
       </div>
