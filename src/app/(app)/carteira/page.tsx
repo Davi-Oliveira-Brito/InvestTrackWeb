@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
 import { FormAlert } from "@/components/ui/form-alert"
 import {
   Table,
@@ -98,14 +97,14 @@ export default function CarteiraPage() {
         )}
 
         {!isLoading && !loadError && posicoes.length === 0 && (
-          <Card className="flex flex-col items-center gap-3 py-12 text-center">
+          <div className="flex flex-col items-center gap-3 py-12 text-center">
             <p className="text-body">Você ainda não tem posições na carteira.</p>
             <Button onClick={openCreateDialog}>Adicionar primeira posição</Button>
-          </Card>
+          </div>
         )}
 
         {!isLoading && !loadError && posicoes.length > 0 && (
-          <Card className="p-0">
+          <>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -181,7 +180,7 @@ export default function CarteiraPage() {
                 ))}
               </TableBody>
             </Table>
-          </Card>
+          </>
         )}
       </div>
 
