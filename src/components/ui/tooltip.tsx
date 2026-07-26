@@ -5,7 +5,10 @@ import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip"
 import { cn } from "@/lib/utils"
 
 const Tooltip = TooltipPrimitive.Root
-const TooltipTrigger = TooltipPrimitive.Trigger
+
+function TooltipTrigger({ delay = 150, ...props }: TooltipPrimitive.Trigger.Props) {
+  return <TooltipPrimitive.Trigger delay={delay} {...props} />
+}
 
 function TooltipContent({
   className,

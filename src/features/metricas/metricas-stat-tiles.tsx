@@ -1,7 +1,5 @@
-import { Info } from "lucide-react"
-
 import { Card } from "@/components/ui/card"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { InfoHint } from "@/components/ui/info-hint"
 import { formatPercent, toNumber } from "@/lib/format"
 import type { MetricasResponse } from "@/types/carteira"
 
@@ -21,20 +19,7 @@ function LinhaResumo({ label, valor, info }: LinhaResumoProps) {
       <span className="text-sm text-mute">{label}</span>
       <div className="flex items-center gap-2">
         <span className="text-xl font-semibold text-ink">{valor}</span>
-        <Tooltip>
-          <TooltipTrigger
-            render={
-              <button
-                type="button"
-                aria-label={`Sobre ${label}`}
-                className="flex size-5 items-center justify-center rounded-full text-mute hover:text-ink"
-              />
-            }
-          >
-            <Info className="size-4" />
-          </TooltipTrigger>
-          <TooltipContent>{info}</TooltipContent>
-        </Tooltip>
+        <InfoHint label={`Sobre ${label}`}>{info}</InfoHint>
       </div>
     </div>
   )
