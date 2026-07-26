@@ -82,7 +82,10 @@ export default function DashboardPage() {
         {!isLoading && !loadError && resumo && resumo.quantidadePosicoes > 0 && (
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <ResumoCards resumo={resumo} />
-            <Section title="Alocação por classe de ativo">
+            <Section
+              title="Alocação por classe de ativo"
+              info="Mostra como o valor da sua carteira está distribuído entre Ações, FIIs e Renda Fixa."
+            >
               <div className="flex items-center justify-center">
                 <AllocationPieChart alocacao={aggregateByTipo(posicoes)} />
               </div>
