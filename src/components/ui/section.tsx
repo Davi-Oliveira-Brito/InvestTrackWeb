@@ -13,7 +13,7 @@ interface SectionProps {
 
 export function Section({ title, info, children, className }: SectionProps) {
   return (
-    <section className={cn("rounded-md border border-border bg-canvas p-4", className)}>
+    <section className={cn("rounded-lg bg-canvas p-4 shadow-sm", className)}>
       <header className="mb-4 flex items-center gap-2">
         <h2 className="font-heading text-lg font-semibold text-ink">{title}</h2>
         {info && (

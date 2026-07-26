@@ -60,7 +60,7 @@
 :root {
   /* Brand tokens — see DESIGN-SYSTEM.md */
   --canvas: #ffffff;
-  --canvas-soft: #fffff7;
+  --canvas-soft: #FFFFF7;
   --ink: #1C1B10;
   --body: #807A47;
   --mute: #807A47;
@@ -81,7 +81,7 @@
   --primary-foreground: var(--ink);
   --secondary: var(--canvas-soft);
   --secondary-foreground: var(--ink);
-  --muted: var(--canvas-soft);
+  --muted: var(--border);
   --muted-foreground: var(--mute);
   --accent: var(--primary-pale);
   --accent-foreground: var(--ink);
