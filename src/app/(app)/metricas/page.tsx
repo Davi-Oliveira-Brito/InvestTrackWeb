@@ -107,7 +107,10 @@ export default function MetricasPage() {
 
         {!isLoading && !isEmpty && !loadError && metricas && (
           <div className="flex flex-col gap-6">
-            <Section title="Carteira vs. CDI vs. Ibovespa">
+            <Section
+              title="Carteira vs. CDI vs. Ibovespa"
+              info="Compara o retorno anualizado da sua carteira com dois benchmarks de referência: o CDI (renda fixa) e o Ibovespa (bolsa)."
+            >
               <RetornoBarChart itens={itensRetorno} />
             </Section>
             <MetricasStatTiles metricas={metricas} />
