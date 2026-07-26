@@ -17,12 +17,12 @@ Next.js (App Router), Tailwind CSS, componentes com padrão de biblioteca tipo R
 ```
 <div class="h-screen flex flex-col overflow-hidden">
   ├─ Banner de ambiente (opcional, ex: "Ambiente de testes") — bg âmbar, texto escuro, botão outline
-  └─ <div class="app flex-1 flex bg-[FFFFF7] overflow-hidden rounded-t-[24px]">
+  └─ <div class="app flex-1 flex bg-[#FFFFF7] overflow-hidden rounded-t-[24px]">
        ├─ <aside>            → Sidebar (nav lateral)
        └─ <div main>         → Conteúdo (Topbar + página)
 ```
 
-- Fundo geral da área logada: `FFFFF7` — equivalente ao **"Fundo cinza claro"** do `DESIGN-SYSTEM.md`.
+- Fundo geral da área logada: `#FFFFF7` — equivalente ao **"Fundo cinza claro"** do `DESIGN-SYSTEM.md`.
 - O container principal tem `rounded-t-[24px]` (cantos superiores arredondados), separando visualmente a "aplicação" do banner/topo do navegador.
 - Sem sombras nesse nível — reforça o estilo flat do design system base.
 
@@ -87,7 +87,7 @@ Estrutura: `breadcrumb` à esquerda + `título da página (H1)` + ícone de cont
 Usado nos números do topo do Dashboard (Valor total da carteira / Rentabilidade / Quantidade de ativos).
 
 ```
-[Wrapper claro]  bg: FFFFF7 · radius: 16px · padding: 16px
+[Wrapper claro]  bg: #FFFFF7 · radius: 16px · padding: 16px
   ├─ [Card branco] bg: #fff · radius: 16px · padding: 16px   (métrica 1)
   ├─ [Card branco] bg: #fff · radius: 16px · padding: 16px   (métrica 2)
   └─ [Card branco] bg: #fff · radius: 16px · padding: 16px   (métrica 3)
@@ -145,7 +145,7 @@ Todos: `height: 40px`, `padding: 0 12px` (chip: `8px 12px`), `gap: 8px` entre í
 
 ### 6.1 Campo de busca
 
-`label` como wrapper: bg `FFFFF7`, borda `1px solid #EDECDF`, radius `8px`, altura `40px`, padding `0 12px`, ícone de lupa (Lucide) dentro.
+`label` como wrapper: bg `#FFFFF7`, borda `1px solid #EDECDF`, radius `8px`, altura `40px`, padding `0 12px`, ícone de lupa (Lucide) dentro.
 
 ### 6.2 Select / dropdown trigger (ex: "Todos os tipos de ativo")
 
@@ -182,7 +182,7 @@ Usado na listagem de posições da carteira.
 |---|---|
 | Limão claro `#EAE668` | Botão primário, item de nav ativo, chip de filtro ativo |
 | Oliva escuro `#4A430E` | Texto do botão primário |
-| Fundo cinza claro `FFFFF7` | Fundo da sidebar/app shell, fundo do card-mãe de métricas, fundo do input de busca |
+| Fundo cinza claro `#FFFFF7` | Fundo da sidebar/app shell, fundo do card-mãe de métricas, fundo do input de busca |
 | Branco `#FFFFFF` | Cards individuais, popovers, tabela |
 | Cinza claro (bordas) `#EDECDF` | Toda borda de card, input, select, botão secundário |
 | Quase-preto `#1C1B10` | Headings de página, texto de nav ativo, chip ativo |

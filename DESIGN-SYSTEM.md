@@ -29,7 +29,7 @@ Stack: **Next.js** (fontes carregadas via `next/font`).
 |---|---|---|
 | Fundo geral | `#F8F5DF` | Background da página |
 | Fundo alternativo | `#FAF9F0` | Seções alternativas |
-| Fundo cinza claro | `FFFFF7` | Cards / blocos |
+| Fundo cinza claro | `#FFFFF7` | Cards / blocos |
 | Branco | `#FFFFFF` | Cards, superfícies |
 | Cinza-oliva (texto secundário) | `#807A47` | Parágrafos, links |
 | Quase-preto | `#1C1B10` | Texto de alto contraste |
