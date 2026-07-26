@@ -1,7 +1,6 @@
-import { Info } from "lucide-react"
 import type { ReactNode } from "react"
 
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { InfoHint } from "@/components/ui/info-hint"
 import { cn } from "@/lib/utils"
 
 interface SectionProps {
@@ -16,22 +15,7 @@ export function Section({ title, info, children, className }: SectionProps) {
     <section className={cn("rounded-lg bg-canvas p-4 shadow-sm", className)}>
       <header className="mb-4 flex items-center gap-2">
         <h2 className="font-heading text-lg font-semibold text-ink">{title}</h2>
-        {info && (
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <button
-                  type="button"
-                  aria-label="Mais informações"
-                  className="flex size-5 items-center justify-center rounded-full text-mute hover:text-ink"
-                />
-              }
-            >
-              <Info className="size-4" />
-            </TooltipTrigger>
-            <TooltipContent>{info}</TooltipContent>
-          </Tooltip>
-        )}
+        {info && <InfoHint label="Mais informações">{info}</InfoHint>}
       </header>
       {children}
     </section>

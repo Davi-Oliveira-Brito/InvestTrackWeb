@@ -1,7 +1,5 @@
-import { Info } from "lucide-react"
-
 import { Card } from "@/components/ui/card"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { InfoHint } from "@/components/ui/info-hint"
 import { formatCurrencyBRL, formatPercent, toNumber } from "@/lib/format"
 import type { ResumoResponse } from "@/types/carteira"
 
@@ -18,20 +16,7 @@ function MetricLabel({ label, info }: MetricLabelProps) {
   return (
     <div className="flex items-center gap-1.5">
       <span className="text-sm text-mute">{label}</span>
-      <Tooltip>
-        <TooltipTrigger
-          render={
-            <button
-              type="button"
-              aria-label={`Sobre ${label}`}
-              className="flex size-4 items-center justify-center rounded-full text-mute hover:text-ink"
-            />
-          }
-        >
-          <Info className="size-3.5" />
-        </TooltipTrigger>
-        <TooltipContent>{info}</TooltipContent>
-      </Tooltip>
+      <InfoHint label={`Sobre ${label}`}>{info}</InfoHint>
     </div>
   )
 }
