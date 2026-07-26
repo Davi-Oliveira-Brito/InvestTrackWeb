@@ -17,15 +17,15 @@ export function ResumoCards({ resumo }: ResumoCardsProps) {
       : "text-negative"
 
   return (
-    <div className="flex flex-col gap-4">
-      <Card className="flex flex-col gap-1">
+    <Card variant="metric-wrapper" className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <Card variant="metric-child" className="flex flex-col gap-1">
         <span className="text-sm text-mute">Valor Investido</span>
         <span className="text-2xl font-semibold text-ink">
           {formatCurrencyBRL(resumo.valorTotalInvestido)}
         </span>
       </Card>
 
-      <Card className="flex flex-col gap-1">
+      <Card variant="metric-child" className="flex flex-col gap-1">
         <span className="text-sm text-mute">Valor Atual</span>
         <span className="text-2xl font-semibold text-ink">
           {resumo.valorTotalAtual === null
@@ -34,7 +34,7 @@ export function ResumoCards({ resumo }: ResumoCardsProps) {
         </span>
       </Card>
 
-      <Card className="flex flex-col gap-1">
+      <Card variant="metric-child" className="flex flex-col gap-1">
         <span className="text-sm text-mute">Rentabilidade</span>
         {rentabilidadeConhecida ? (
           <span className={`text-2xl font-semibold ${rentabilidadeColor}`}>
@@ -46,7 +46,7 @@ export function ResumoCards({ resumo }: ResumoCardsProps) {
         )}
       </Card>
 
-      <Card className="flex flex-col gap-1">
+      <Card variant="metric-child" className="flex flex-col gap-1">
         <span className="text-sm text-mute">Posições</span>
         <span className="text-2xl font-semibold text-ink">
           {resumo.quantidadePosicoes}
@@ -57,6 +57,6 @@ export function ResumoCards({ resumo }: ResumoCardsProps) {
           </span>
         )}
       </Card>
-    </div>
+    </Card>
   )
 }
