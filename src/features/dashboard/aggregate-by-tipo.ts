@@ -11,9 +11,9 @@ export interface AlocacaoTipo {
 }
 
 const CORES_POR_TIPO: Record<TipoAtivo, string> = {
-  Acao: "#2a78d6",
-  FII: "#eb6834",
-  RendaFixa: "#1baf7a",
+  Acao: "#3B82F6",
+  FII: "#A855F7",
+  RendaFixa: "#14B8A6",
 }
 
 export function aggregateByTipo(posicoes: PosicaoResponse[]): AlocacaoTipo[] {
