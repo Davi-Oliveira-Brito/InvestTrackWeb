@@ -17,7 +17,7 @@ export function AppShell({ children }: AppShellProps) {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <div data-app-shell className="flex min-h-screen flex-col md:flex-row">
+    <div className="flex min-h-screen flex-col md:flex-row">
       <aside
         className={cn(
           "hidden shrink-0 flex-col border-r border-border bg-canvas-soft transition-all duration-300 md:sticky md:top-0 md:flex md:h-screen",
