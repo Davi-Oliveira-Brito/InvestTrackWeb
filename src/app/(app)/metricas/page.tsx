@@ -4,8 +4,8 @@ import Link from "next/link"
 import { useCallback, useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
 import { FormAlert } from "@/components/ui/form-alert"
+import { Section } from "@/components/ui/section"
 import { useAuth } from "@/features/auth/auth-provider"
 import { MetricasStatTiles } from "@/features/metricas/metricas-stat-tiles"
 import { RetornoBarChart, type RetornoBarItem } from "@/features/metricas/retorno-bar-chart"
@@ -87,13 +87,13 @@ export default function MetricasPage() {
         {isLoading && <p className="text-body">Carregando...</p>}
 
         {!isLoading && isEmpty && (
-          <Card className="flex flex-col items-center gap-3 py-12 text-center">
+          <div className="flex flex-col items-center gap-3 py-12 text-center">
             <p className="text-body">Você ainda não tem posições na carteira.</p>
             <Button
               render={<Link href="/carteira">Adicionar posição</Link>}
               nativeButton={false}
             />
-          </Card>
+          </div>
         )}
 
         {!isLoading && !isEmpty && loadError && (
@@ -107,9 +107,9 @@ export default function MetricasPage() {
 
         {!isLoading && !isEmpty && !loadError && metricas && (
           <div className="flex flex-col gap-6">
-            <Card>
+            <Section title="Carteira vs. CDI vs. Ibovespa">
               <RetornoBarChart itens={itensRetorno} />
-            </Card>
+            </Section>
             <MetricasStatTiles metricas={metricas} />
           </div>
         )}
