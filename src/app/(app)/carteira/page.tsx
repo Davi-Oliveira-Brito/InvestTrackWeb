@@ -1,5 +1,6 @@
 "use client"
 
+import { Pencil, Trash2 } from "lucide-react"
 import { useCallback, useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -12,6 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { DeletePosicaoDialog } from "@/features/carteira/delete-posicao-dialog"
 import { PosicaoFormDialog } from "@/features/carteira/posicao-form-dialog"
 import { TIPO_LABELS } from "@/features/carteira/tipo-ativo"
@@ -159,21 +161,37 @@ export default function CarteiraPage() {
                       )}
                     </TableCell>
                     <TableCell>
-                      <div className="flex justify-end gap-2">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => openEditDialog(posicao)}
-                        >
-                          Editar
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => openDeleteDialog(posicao)}
-                        >
-                          Remover
-                        </Button>
+                      <div className="flex justify-end gap-1">
+                        <Tooltip>
+                          <TooltipTrigger
+                            render={
+                              <button
+                                type="button"
+                                aria-label={`Editar ${posicao.ticker}`}
+                                onClick={() => openEditDialog(posicao)}
+                                className="flex size-8 items-center justify-center rounded-md text-body transition-colors hover:bg-muted hover:text-ink"
+                              />
+                            }
+                          >
+                            <Pencil className="size-4" />
+                          </TooltipTrigger>
+                          <TooltipContent>Editar</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger
+                            render={
+                              <button
+                                type="button"
+                                aria-label={`Remover ${posicao.ticker}`}
+                                onClick={() => openDeleteDialog(posicao)}
+                                className="flex size-8 items-center justify-center rounded-md text-body transition-colors hover:bg-destructive/10 hover:text-destructive"
+                              />
+                            }
+                          >
+                            <Trash2 className="size-4" />
+                          </TooltipTrigger>
+                          <TooltipContent>Remover</TooltipContent>
+                        </Tooltip>
                       </div>
                     </TableCell>
                   </TableRow>
