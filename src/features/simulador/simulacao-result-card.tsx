@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card"
 import { formatCurrencyBRL, formatDateBR, formatPercent, toNumber } from "@/lib/format"
 import type { SimulacaoResponse } from "@/types/simulacao"
 
@@ -11,7 +10,7 @@ export function SimulacaoResultCard({ resultado }: SimulacaoResultCardProps) {
     toNumber(resultado.rentabilidadeValor) >= 0 ? "text-positive" : "text-negative"
 
   return (
-    <Card className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
         <span className="text-sm text-mute">
           {resultado.ticker} em {formatDateBR(resultado.dataInvestimento)}
@@ -43,6 +42,6 @@ export function SimulacaoResultCard({ resultado }: SimulacaoResultCardProps) {
           {formatPercent(resultado.rentabilidadePercentual)})
         </span>
       </div>
-    </Card>
+    </div>
   )
 }
