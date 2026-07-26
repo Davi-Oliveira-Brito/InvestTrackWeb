@@ -25,6 +25,7 @@ import { toIsoDateAtMidnightUtc } from "@/lib/format"
 import { getApiErrorMessage, pickError } from "@/lib/validation-errors"
 import { createPosicao, updatePosicao } from "@/services/carteira-service"
 import type { PosicaoResponse, TipoAtivo } from "@/types/carteira"
+import type { AtivoSugestao } from "@/types/ativo"
 import {
   validateDataCompra,
   validateNomeAtivo,
@@ -34,6 +35,7 @@ import {
   validateTipo,
 } from "@/features/carteira/validation"
 import { TIPO_LABELS } from "@/features/carteira/tipo-ativo"
+import { TickerAutocomplete } from "@/features/carteira/ticker-autocomplete"
 
 interface FieldErrors {
   ticker?: string
@@ -184,11 +186,17 @@ function PosicaoForm({ posicao, token, onSaved }: PosicaoFormProps) {
         <>
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="ticker">Ticker</Label>
-            <Input
+            <TickerAutocomplete
               id="ticker"
               value={ticker}
-              onChange={(event) => setTicker(event.target.value)}
-              aria-invalid={Boolean(fieldErrors.ticker)}
+              onValueChange={setTicker}
+              onSelect={(ativo: AtivoSugestao) => {
+                setTicker(ativo.ticker)
+                setNomeAtivo(ativo.nome)
+                setTipo(ativo.tipo)
+              }}
+              token={token}
+              ariaInvalid={Boolean(fieldErrors.ticker)}
             />
             <FieldError>{fieldErrors.ticker}</FieldError>
           </div>

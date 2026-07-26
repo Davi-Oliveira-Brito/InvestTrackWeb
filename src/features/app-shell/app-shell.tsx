@@ -34,7 +34,7 @@ export function AppShell({ children }: AppShellProps) {
             type="button"
             aria-label={isCollapsed ? "Expandir menu" : "Colapsar menu"}
             onClick={() => setIsCollapsed((value) => !value)}
-            className="flex size-8 items-center justify-center rounded-sm text-body hover:bg-canvas hover:text-ink"
+            className="flex size-8 cursor-pointer items-center justify-center rounded-sm text-body hover:bg-canvas hover:text-ink"
           >
             {isCollapsed ? (
               <PanelLeftOpen className="size-5" />

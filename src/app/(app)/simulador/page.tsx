@@ -23,7 +23,7 @@ export default function SimuladorPage() {
 
         <Section
           title="Simular investimento"
-          info="Estime quanto um investimento teria rendido se tivesse sido feito em uma data passada, com base na cotação do ativo."
+          info="Estime quanto um investimento teria rendido se tivesse sido feito em uma data passada, com base na cotação do ativo. Disponível apenas para PETR4, MGLU3, VALE3 e ITUB4."
         >
           <SimuladorForm token={token} onResult={setResultado} />
         </Section>
