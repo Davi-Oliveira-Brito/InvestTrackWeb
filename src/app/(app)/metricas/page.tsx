@@ -59,12 +59,12 @@ export default function MetricasPage() {
         {
           label: "Carteira",
           value: toNumber(metricas.retornoAnualizadoCarteira),
-          color: "#2a78d6",
+          color: "#3B82F6",
         },
         {
           label: "CDI",
           value: toNumber(metricas.retornoAnualizadoCdi),
-          color: "#eb6834",
+          color: "#A855F7",
         },
         {
           label: "Ibovespa",
@@ -72,7 +72,7 @@ export default function MetricasPage() {
             metricas.retornoAnualizadoIbovespa === null
               ? null
               : toNumber(metricas.retornoAnualizadoIbovespa),
-          color: "#1baf7a",
+          color: "#14B8A6",
         },
       ]
     : []
