@@ -49,7 +49,7 @@ export default function DashboardPage() {
   }, [token])
 
   useEffect(() => {
-    fetchDashboard()
+    Promise.resolve().then(fetchDashboard)
   }, [fetchDashboard])
 
   if (!token) return null

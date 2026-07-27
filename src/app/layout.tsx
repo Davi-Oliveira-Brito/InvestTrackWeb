@@ -1,7 +1,21 @@
 import type { Metadata } from "next";
 import { Fustat, Inter_Tight } from "next/font/google";
 import { AuthProvider } from "@/features/auth/auth-provider";
+import { ThemeProvider } from "@/features/theme/theme-provider";
 import "./globals.css";
+
+// Runs before hydration so the stored theme is applied without a flash of
+// the wrong palette — mirrors what next-themes does, without the dependency.
+const THEME_INIT_SCRIPT = `
+(function () {
+  try {
+    var theme = localStorage.getItem("investtrack:tema");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  } catch (e) {}
+})();
+`;
 
 const fustat = Fustat({
   variable: "--font-fustat",
@@ -27,10 +41,13 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${fustat.variable} ${interTight.variable} h-full antialiased`}
+      className={`${fustat.variable} ${interTight.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <AuthProvider>{children}</AuthProvider>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <ThemeProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
