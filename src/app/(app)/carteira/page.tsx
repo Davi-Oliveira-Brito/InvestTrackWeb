@@ -57,7 +57,7 @@ export default function CarteiraPage() {
   }, [token])
 
   useEffect(() => {
-    fetchPosicoes()
+    Promise.resolve().then(fetchPosicoes)
   }, [fetchPosicoes])
 
   if (!token) return null

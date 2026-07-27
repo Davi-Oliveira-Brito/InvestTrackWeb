@@ -56,7 +56,7 @@ export default function HistoricoPage() {
   }, [token, pagina])
 
   useEffect(() => {
-    fetchHistorico()
+    Promise.resolve().then(fetchHistorico)
   }, [fetchHistorico])
 
   if (!token) return null

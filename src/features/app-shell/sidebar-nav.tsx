@@ -59,7 +59,7 @@ export function SidebarNav({ isCollapsed = false, onNavigate }: SidebarNavProps)
   // navegações, então isso é o que sincroniza o avatar/nome após uma edição
   // feita em /perfil, sem precisar de um contexto compartilhado.
   useEffect(() => {
-    fetchPerfil()
+    Promise.resolve().then(fetchPerfil)
   }, [fetchPerfil, pathname])
 
   const displayName = perfil?.nome ?? nome ?? email ?? ""

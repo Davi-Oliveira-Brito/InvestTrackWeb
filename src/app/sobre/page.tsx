@@ -34,7 +34,7 @@ export default function SobrePage() {
             <h2 className="font-heading text-xl font-bold text-[#ECEDEE]">O que é ilustrativo</h2>
             <p className="text-[#A0A3A7]">
               Alguns elementos da página inicial existem só para compor o visual de landing page
-              e não representam dados reais: as fotos e o número de "500 investidores" na seção de
+              e não representam dados reais: as fotos e o número de &ldquo;500 investidores&rdquo; na seção de
               prova social são fictícios. O simulador também está limitado, por enquanto, a
               cotações históricas de PETR4, MGLU3, VALE3 e ITUB4.
             </p>
