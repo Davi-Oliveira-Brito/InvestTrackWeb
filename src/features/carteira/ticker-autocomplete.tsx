@@ -124,7 +124,7 @@ export function TickerAutocomplete({
       />
 
       {showPanel && (
-        <div className="absolute z-50 mt-1 w-full overflow-hidden rounded-md bg-popover text-popover-foreground shadow-lg ring-1 ring-foreground/10">
+        <div className="absolute z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-md bg-popover text-popover-foreground shadow-lg ring-1 ring-foreground/10">
           {isLoading && (
             <p className="px-3 py-2 text-sm text-mute">Buscando...</p>
           )}

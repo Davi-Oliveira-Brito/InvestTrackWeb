@@ -12,11 +12,13 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export function Footer() {
   return (
-    <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-[#2C2F33] bg-[#16181A] px-6 py-4 text-sm text-[#A0A3A7] sm:px-10">
-      <span className="shrink-0">© {new Date().getFullYear()} InvestTrack</span>
+    <footer className="flex flex-col items-center gap-3 border-t border-[#2C2F33] bg-[#16181A] px-6 py-5 text-sm text-[#A0A3A7] sm:flex-row sm:justify-between sm:gap-4 sm:px-10 sm:py-4">
+      <span className="order-2 shrink-0 sm:order-1">
+        © {new Date().getFullYear()} InvestTrack
+      </span>
 
-      <p className="flex-1 text-center text-xs text-[#A0A3A7]">
-        Projeto pessoal de portfólio - alguns dados desta página são ilustrativos.{" "}
+      <p className="order-1 text-center text-xs text-balance text-[#A0A3A7] sm:order-2 sm:max-w-sm sm:flex-1">
+        Projeto pessoal de portfólio — alguns dados desta página são ilustrativos.{" "}
         <Link href="/sobre" className="font-medium text-[#ECEDEE] underline underline-offset-2">
           Saiba mais
         </Link>
@@ -26,7 +28,7 @@ export function Footer() {
         href={LINKEDIN_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex shrink-0 items-center gap-1.5 text-[#A0A3A7] hover:text-[#ECEDEE]"
+        className="order-3 flex shrink-0 items-center gap-1.5 text-[#A0A3A7] hover:text-[#ECEDEE]"
       >
         <LinkedinIcon className="size-3.5" />
         LinkedIn

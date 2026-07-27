@@ -75,7 +75,11 @@ export default function DashboardPage() {
         {!isLoading && !loadError && resumo && resumo.quantidadePosicoes === 0 && (
           <div className="flex flex-col items-center gap-3 py-12 text-center">
             <p className="text-body">Você ainda não tem posições na carteira.</p>
-            <Button render={<Link href="/carteira">Adicionar posição</Link>} nativeButton={false} />
+            <Button
+              render={<Link href="/carteira">Adicionar posição</Link>}
+              nativeButton={false}
+              className="mt-2"
+            />
           </div>
         )}
 
