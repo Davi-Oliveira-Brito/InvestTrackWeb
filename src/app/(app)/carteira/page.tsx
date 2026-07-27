@@ -25,6 +25,7 @@ import {
   toNumber,
 } from "@/lib/format"
 import { getApiErrorMessage } from "@/lib/validation-errors"
+import { cn } from "@/lib/utils"
 import { listPosicoes } from "@/services/carteira-service"
 import type { PosicaoResponse } from "@/types/carteira"
 
@@ -101,7 +102,6 @@ export default function CarteiraPage() {
         {!isLoading && !loadError && posicoes.length === 0 && (
           <div className="flex flex-col items-center gap-3 py-12 text-center">
             <p className="text-body">Você ainda não tem posições na carteira.</p>
-            <Button onClick={openCreateDialog}>Adicionar primeira posição</Button>
           </div>
         )}
 
@@ -113,11 +113,11 @@ export default function CarteiraPage() {
                   <TableHead>Ticker</TableHead>
                   <TableHead>Nome</TableHead>
                   <TableHead>Tipo</TableHead>
-                  <TableHead>Quantidade</TableHead>
+                  <TableHead>Qtd.</TableHead>
                   <TableHead>Preço médio</TableHead>
                   <TableHead>Preço atual</TableHead>
                   <TableHead>Valor atual</TableHead>
-                  <TableHead>Rentabilidade</TableHead>
+                  <TableHead>Rentab.</TableHead>
                   <TableHead className="text-right">Ações</TableHead>
                 </TableRow>
               </TableHeader>
@@ -125,20 +125,22 @@ export default function CarteiraPage() {
                 {posicoes.map((posicao) => (
                   <TableRow key={posicao.id}>
                     <TableCell className="font-semibold">{posicao.ticker}</TableCell>
-                    <TableCell>{posicao.nomeAtivo}</TableCell>
+                    <TableCell className="max-w-[160px] truncate whitespace-normal">
+                      {posicao.nomeAtivo}
+                    </TableCell>
                     <TableCell>{TIPO_LABELS[posicao.tipo]}</TableCell>
                     <TableCell>{formatNumber(posicao.quantidade)}</TableCell>
                     <TableCell>{formatCurrencyBRL(posicao.precoMedio)}</TableCell>
                     <TableCell>
                       {posicao.precoAtual === null ? (
-                        <span className="text-mute">Cotação pendente</span>
+                        <span className="text-mute">Pendente</span>
                       ) : (
                         formatCurrencyBRL(posicao.precoAtual)
                       )}
                     </TableCell>
                     <TableCell>
                       {posicao.valorAtual === null ? (
-                        <span className="text-mute">Cotação pendente</span>
+                        <span className="text-mute">Pendente</span>
                       ) : (
                         formatCurrencyBRL(posicao.valorAtual)
                       )}
@@ -146,18 +148,21 @@ export default function CarteiraPage() {
                     <TableCell>
                       {posicao.rentabilidadeValor === null ||
                       posicao.rentabilidadePercentual === null ? (
-                        <span className="text-mute">Cotação pendente</span>
+                        <span className="text-mute">Pendente</span>
                       ) : (
-                        <span
-                          className={
+                        <div
+                          className={cn(
+                            "flex flex-col leading-tight",
                             toNumber(posicao.rentabilidadeValor) >= 0
                               ? "text-positive"
                               : "text-negative"
-                          }
+                          )}
                         >
-                          {formatCurrencyBRL(posicao.rentabilidadeValor)} (
-                          {formatPercent(posicao.rentabilidadePercentual)})
-                        </span>
+                          <span>{formatCurrencyBRL(posicao.rentabilidadeValor)}</span>
+                          <span className="text-xs opacity-80">
+                            {formatPercent(posicao.rentabilidadePercentual)}
+                          </span>
+                        </div>
                       )}
                     </TableCell>
                     <TableCell>
