@@ -24,15 +24,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [nome, setNome] = useState<string | null>(null)
 
   useEffect(() => {
-    const session = getSession()
-    if (session) {
-      setToken(session.token)
-      setEmail(session.email)
-      setNome(session.nome ?? null)
-      setStatus("authenticated")
-    } else {
-      setStatus("unauthenticated")
-    }
+    Promise.resolve().then(() => {
+      const session = getSession()
+      if (session) {
+        setToken(session.token)
+        setEmail(session.email)
+        setNome(session.nome ?? null)
+        setStatus("authenticated")
+      } else {
+        setStatus("unauthenticated")
+      }
+    })
   }, [])
 
   const login = useCallback((session: Session) => {

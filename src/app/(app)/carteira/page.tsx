@@ -57,7 +57,7 @@ export default function CarteiraPage() {
   }, [token])
 
   useEffect(() => {
-    fetchPosicoes()
+    Promise.resolve().then(fetchPosicoes)
   }, [fetchPosicoes])
 
   if (!token) return null
@@ -169,7 +169,7 @@ export default function CarteiraPage() {
                                 type="button"
                                 aria-label={`Editar ${posicao.ticker}`}
                                 onClick={() => openEditDialog(posicao)}
-                                className="flex size-8 items-center justify-center rounded-md text-body transition-colors hover:bg-muted hover:text-ink"
+                                className="flex size-8 cursor-pointer items-center justify-center rounded-md text-body transition-colors hover:bg-muted hover:text-ink"
                               />
                             }
                           >
@@ -184,7 +184,7 @@ export default function CarteiraPage() {
                                 type="button"
                                 aria-label={`Remover ${posicao.ticker}`}
                                 onClick={() => openDeleteDialog(posicao)}
-                                className="flex size-8 items-center justify-center rounded-md text-body transition-colors hover:bg-destructive/10 hover:text-destructive"
+                                className="flex size-8 cursor-pointer items-center justify-center rounded-md text-body transition-colors hover:bg-destructive/10 hover:text-destructive"
                               />
                             }
                           >
