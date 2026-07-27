@@ -42,12 +42,14 @@ export function TickerAutocomplete({
     latestQueryRef.current = query
 
     if (query.length === 0) {
-      setSuggestions([])
-      setIsLoading(false)
+      Promise.resolve().then(() => {
+        setSuggestions([])
+        setIsLoading(false)
+      })
       return
     }
 
-    setIsLoading(true)
+    Promise.resolve().then(() => setIsLoading(true))
     debounceRef.current = setTimeout(async () => {
       const result = await buscarAtivos(query, token)
       if (latestQueryRef.current !== query) return

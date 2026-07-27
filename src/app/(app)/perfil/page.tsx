@@ -34,7 +34,7 @@ export default function PerfilPage() {
   }, [token])
 
   useEffect(() => {
-    fetchPerfil()
+    Promise.resolve().then(fetchPerfil)
   }, [fetchPerfil])
 
   if (!token) return null

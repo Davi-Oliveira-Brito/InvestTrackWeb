@@ -21,12 +21,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light")
 
   useEffect(() => {
-    const stored = localStorage.getItem(THEME_KEY)
-    if (stored === "dark" || stored === "light") {
-      setTheme(stored)
-    } else {
-      setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light")
-    }
+    Promise.resolve().then(() => {
+      const stored = localStorage.getItem(THEME_KEY)
+      if (stored === "dark" || stored === "light") {
+        setTheme(stored)
+      } else {
+        setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light")
+      }
+    })
   }, [])
 
   const toggleTheme = useCallback(() => {

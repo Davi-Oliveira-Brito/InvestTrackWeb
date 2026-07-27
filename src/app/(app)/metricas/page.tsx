@@ -49,7 +49,7 @@ export default function MetricasPage() {
   }, [token])
 
   useEffect(() => {
-    fetchMetricas()
+    Promise.resolve().then(fetchMetricas)
   }, [fetchMetricas])
 
   if (!token) return null
