@@ -84,7 +84,11 @@ export default function MetricasPage() {
           Métricas
         </h1>
 
-        {isLoading && <p className="text-body">Carregando...</p>}
+        {isLoading && (
+          <p className="text-body">
+            Calculando métricas... isso pode levar alguns segundos.
+          </p>
+        )}
 
         {!isLoading && isEmpty && (
           <div className="flex flex-col items-center gap-3 py-12 text-center">
@@ -92,6 +96,7 @@ export default function MetricasPage() {
             <Button
               render={<Link href="/carteira">Adicionar posição</Link>}
               nativeButton={false}
+              className="mt-2"
             />
           </div>
         )}

@@ -13,6 +13,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { FormAlert } from "@/components/ui/form-alert"
+import { toast } from "@/components/ui/toast"
 import { getApiErrorMessage } from "@/lib/validation-errors"
 import { deletePosicao } from "@/services/carteira-service"
 import type { PosicaoResponse } from "@/types/carteira"
@@ -44,10 +45,13 @@ export function DeletePosicaoDialog({
     setIsDeleting(false)
 
     if (!result.ok) {
-      setError(getApiErrorMessage(result.error))
+      const message = getApiErrorMessage(result.error)
+      setError(message)
+      toast.add({ title: "Erro ao remover posição", description: message, type: "error" })
       return
     }
 
+    toast.add({ title: `${posicao.ticker} removido da carteira`, type: "success" })
     onDeleted()
     onOpenChange(false)
   }

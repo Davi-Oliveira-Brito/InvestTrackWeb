@@ -1,9 +1,24 @@
+"use client"
+
+import { motion, type Variants } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 
 const AVATARS = ["rosto1.png", "rosto2.png", "rosto3.png", "rosto4.png"]
+
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+}
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+}
 
 export function Hero() {
   return (
@@ -14,21 +29,29 @@ export function Hero() {
         <div className="absolute inset-0 bg-[#16181A]/55" />
       </div>
 
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
-        <h1 className="font-heading text-4xl font-black tracking-tight text-[#ECEDEE] sm:text-5xl md:text-6xl">
-          O controle da sua <br/> carteira de investimentos.
-        </h1>
-        <p className="max-w-xxl text-lg text-white">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center"
+      >
+        <motion.h1
+          variants={item}
+          className="font-heading text-4xl font-black tracking-tight text-[#ECEDEE] sm:text-5xl md:text-6xl"
+        >
+          O controle da sua <br /> carteira de investimentos.
+        </motion.h1>
+        <motion.p variants={item} className="max-w-xxl text-lg text-white">
           Acompanhe rentabilidade, risco e como você se compara ao CDI e ao
-          Ibovespa.  <br/>Tudo em um painel só, sem planilha e sem retrabalho.
-        </p>
+          Ibovespa. <br />Tudo em um painel só, sem planilha e sem retrabalho.
+        </motion.p>
 
-        <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+        <motion.div variants={item} className="mt-4 flex flex-col gap-3 sm:flex-row">
           <Button
             render={<Link href="/registro">Criar conta</Link>}
             nativeButton={false}
             size="xl"
-            className="rounded-full"
+            className="rounded-full bg-[#EAE668] text-[#16181A] transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-[0_0_28px_rgba(234,230,104,0.55)]"
           />
           <Button
             render={<Link href="/sobre">Saiba mais</Link>}
@@ -37,9 +60,13 @@ export function Hero() {
             size="xl"
             className="rounded-full border-white/70 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
           />
-        </div>
+        </motion.div>
 
-        <div id="prova-social" className="mt-6 flex items-center gap-3">
+        <motion.div
+          id="prova-social"
+          variants={item}
+          className="mt-6 flex flex-col items-center gap-2 sm:flex-row sm:gap-3"
+        >
           <div className="flex -space-x-3">
             {AVATARS.map((arquivo) => (
               <Image
@@ -52,11 +79,11 @@ export function Hero() {
               />
             ))}
           </div>
-          <p className="text-left text-sm text-[#A0A3A7]">
+          <p className="text-center text-sm text-white/80 sm:text-left">
             Mais de 500 investidores já acompanham a carteira aqui.
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </main>
   )
 }

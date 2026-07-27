@@ -1,7 +1,22 @@
+"use client"
+
+import { motion, type Variants } from "framer-motion"
 import Link from "next/link"
 
 import { Footer } from "@/features/landing/footer"
 import { Navbar } from "@/features/landing/navbar"
+
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+  },
+}
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+}
 
 export default function SobrePage() {
   return (
@@ -9,8 +24,13 @@ export default function SobrePage() {
       <Navbar />
 
       <main className="flex flex-1 flex-col bg-[#16181A] px-6 py-16">
-        <div className="mx-auto flex w-full max-w-2xl flex-col gap-8">
-          <div className="flex flex-col gap-3">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mx-auto flex w-full max-w-2xl flex-col gap-8"
+        >
+          <motion.div variants={item} className="flex flex-col gap-3">
             <h1 className="font-heading text-3xl font-black tracking-tight text-[#ECEDEE] sm:text-4xl">
               Sobre o InvestTrack
             </h1>
@@ -18,9 +38,9 @@ export default function SobrePage() {
               O InvestTrack é um projeto pessoal de portfólio, desenvolvido para demonstrar
               habilidades de desenvolvimento full-stack, não é um produto comercial.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-3">
+          <motion.div variants={item} className="flex flex-col gap-3">
             <h2 className="font-heading text-xl font-bold text-[#ECEDEE]">O que é real</h2>
             <p className="text-[#A0A3A7]">
               As funcionalidades do painel: Cadastro e login, carteira de investimentos, cálculo
@@ -28,9 +48,9 @@ export default function SobrePage() {
               o simulador de investimentos - são funcionais de verdade, com backend e persistência
               de dados próprios.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-3">
+          <motion.div variants={item} className="flex flex-col gap-3">
             <h2 className="font-heading text-xl font-bold text-[#ECEDEE]">O que é ilustrativo</h2>
             <p className="text-[#A0A3A7]">
               Alguns elementos da página inicial existem só para compor o visual de landing page
@@ -38,9 +58,9 @@ export default function SobrePage() {
               prova social são fictícios. O simulador também está limitado, por enquanto, a
               cotações históricas de PETR4, MGLU3, VALE3 e ITUB4.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-3">
+          <motion.div variants={item} className="flex flex-col gap-3">
             <h2 className="font-heading text-xl font-bold text-[#ECEDEE]">Quem fez</h2>
             <p className="text-[#A0A3A7]">
               Feito por Davi Oliveira Brito. Você pode ver mais projetos e entrar em contato pelo{" "}
@@ -54,12 +74,14 @@ export default function SobrePage() {
               </a>
               .
             </p>
-          </div>
+          </motion.div>
 
-          <Link href="/" className="text-sm text-[#A0A3A7] underline hover:text-[#ECEDEE]">
-            Voltar para a página inicial
-          </Link>
-        </div>
+          <motion.div variants={item}>
+            <Link href="/" className="text-sm text-[#A0A3A7] underline hover:text-[#ECEDEE]">
+              Voltar para a página inicial
+            </Link>
+          </motion.div>
+        </motion.div>
       </main>
 
       <Footer />

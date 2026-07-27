@@ -9,6 +9,7 @@ import { FieldError } from "@/components/ui/field-error"
 import { FormAlert } from "@/components/ui/form-alert"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { toast } from "@/components/ui/toast"
 import { validateNome } from "@/features/perfil/validation"
 import { getApiErrorMessage, pickError } from "@/lib/validation-errors"
 import { deleteFoto, updatePerfil, uploadFoto } from "@/services/perfil-service"
@@ -54,9 +55,12 @@ export function PerfilForm({ token, perfil, onUpdated }: PerfilFormProps) {
     setPreviewUrl(null)
 
     if (!result.ok) {
-      setFotoError(getApiErrorMessage(result.error))
+      const message = getApiErrorMessage(result.error)
+      setFotoError(message)
+      toast.add({ title: "Erro ao enviar foto", description: message, type: "error" })
       return
     }
+    toast.add({ title: "Foto atualizada", type: "success" })
     onUpdated({ ...perfil, fotoUrl: result.data.fotoUrl })
   }
 
@@ -67,9 +71,12 @@ export function PerfilForm({ token, perfil, onUpdated }: PerfilFormProps) {
     setIsUploadingFoto(false)
 
     if (!result.ok) {
-      setFotoError(getApiErrorMessage(result.error))
+      const message = getApiErrorMessage(result.error)
+      setFotoError(message)
+      toast.add({ title: "Erro ao remover foto", description: message, type: "error" })
       return
     }
+    toast.add({ title: "Foto removida", type: "success" })
     onUpdated({ ...perfil, fotoUrl: null })
   }
 
@@ -90,10 +97,13 @@ export function PerfilForm({ token, perfil, onUpdated }: PerfilFormProps) {
         setNomeError(pickError(result.error.errors, "nome", "Nome"))
         return
       }
-      setFormError(getApiErrorMessage(result.error))
+      const message = getApiErrorMessage(result.error)
+      setFormError(message)
+      toast.add({ title: "Erro ao salvar perfil", description: message, type: "error" })
       return
     }
 
+    toast.add({ title: "Perfil atualizado", type: "success" })
     onUpdated(result.data)
   }
 

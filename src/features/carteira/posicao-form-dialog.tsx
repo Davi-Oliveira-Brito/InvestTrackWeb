@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { toast } from "@/components/ui/toast"
 import { toIsoDateAtMidnightUtc } from "@/lib/format"
 import { getApiErrorMessage, pickError } from "@/lib/validation-errors"
 import { createPosicao, updatePosicao } from "@/services/carteira-service"
@@ -164,10 +165,16 @@ function PosicaoForm({ posicao, token, onSaved }: PosicaoFormProps) {
         })
         return
       }
-      setFormError(getApiErrorMessage(result.error))
+      const message = getApiErrorMessage(result.error)
+      setFormError(message)
+      toast.add({ title: "Erro ao salvar posição", description: message, type: "error" })
       return
     }
 
+    toast.add({
+      title: isEdit ? "Posição atualizada" : "Posição adicionada",
+      type: "success",
+    })
     onSaved()
   }
 
