@@ -228,7 +228,7 @@ Usado na listagem de posições da carteira.
 - Estado vazio: texto centralizado, cinza, simples (ex: "Nenhuma posição cadastrada ainda") — sem ilustração, minimalista.
 - Sem zebra-striping nem bordas fortes entre linhas — estilo clean.
 - Valores de rentabilidade: verde para ganho, vermelho para perda (cores de apoio semânticas, não conflitam com a marca amarela).
-- Quando `precoAtual`/rentabilidade vier `null` (cotação pendente): exibir texto secundário "cotação pendente" no lugar do valor, não deixar célula vazia nem quebrar layout.
+- Quando `precoAtual`/rentabilidade vier `null` (cotação pendente): exibir texto secundário curto "Pendente" no lugar do valor (evita forçar scroll horizontal na tabela), não deixar célula vazia nem quebrar layout.
 
 ### 8. Cores específicas de uso no dashboard
 
@@ -255,5 +255,5 @@ Ao implementar telas do dashboard/carteira do InvestTrack, priorize estes padrõ
 3. `<section>` padrão (borda 1px + radius 12px + padding 16px) como componente genérico para qualquer bloco com header — usar nos gráficos (evolução patrimonial, comparação com benchmarks).
 4. Botões com radius `8px` no dashboard (não usar pill aqui — pill é exclusivo da landing).
 5. Popovers/dropdowns como único lugar com sombra (`shadow-lg`); tudo o resto flat.
-6. Tabelas simples, sem zebra-striping, tratando valores `null` de cotação como "cotação pendente" em vez de célula vazia.
+6. Tabelas simples, sem zebra-striping, tratando valores `null` de cotação como "Pendente" em vez de célula vazia.
 7. Tipografia herdada 100% da paleta principal (Fustat para headings/nav/botões, Inter Tight para corpo).
