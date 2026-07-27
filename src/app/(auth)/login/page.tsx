@@ -10,6 +10,7 @@ import { FieldError } from "@/components/ui/field-error"
 import { FormAlert } from "@/components/ui/form-alert"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { PasswordInput } from "@/components/ui/password-input"
 import { useAuth } from "@/features/auth/auth-provider"
 import { validateEmail, validatePassword } from "@/features/auth/validation"
 import { getApiErrorMessage, pickError } from "@/lib/validation-errors"
@@ -84,9 +85,8 @@ export default function LoginPage() {
 
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="password">Senha</Label>
-          <Input
+          <PasswordInput
             id="password"
-            type="password"
             autoComplete="current-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}

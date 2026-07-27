@@ -37,28 +37,28 @@ export function Hero() {
       >
         <motion.h1
           variants={item}
-          className="font-heading text-4xl font-black tracking-tight text-[#ECEDEE] sm:text-5xl md:text-6xl"
+          className="font-heading text-2xl font-black tracking-tight text-[#ECEDEE] sm:text-5xl md:text-6xl"
         >
           O controle da sua <br /> carteira de investimentos.
         </motion.h1>
-        <motion.p variants={item} className="max-w-xxl text-lg text-white">
+        <motion.p variants={item} className="max-w-xxl text-center text-sm text-white sm:text-lg">
           Acompanhe rentabilidade, risco e como você se compara ao CDI e ao
           Ibovespa. <br />Tudo em um painel só, sem planilha e sem retrabalho.
         </motion.p>
 
-        <motion.div variants={item} className="mt-4 flex flex-col gap-3 sm:flex-row">
+        <motion.div variants={item} className="mt-4 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
           <Button
             render={<Link href="/registro">Criar conta</Link>}
             nativeButton={false}
             size="xl"
-            className="rounded-full bg-[#EAE668] text-[#16181A] transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-[0_0_28px_rgba(234,230,104,0.55)]"
+            className="w-full rounded-full bg-[#EAE668] text-[#16181A] transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-[0_0_28px_rgba(234,230,104,0.55)] sm:w-auto"
           />
           <Button
             render={<Link href="/sobre">Saiba mais</Link>}
             nativeButton={false}
             variant="outline"
             size="xl"
-            className="rounded-full border-white/70 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
+            className="w-full rounded-full border-white/70 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 sm:w-auto"
           />
         </motion.div>
 
